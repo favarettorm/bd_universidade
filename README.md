@@ -1,6 +1,47 @@
 # Banco de Dados BD_UNIVERSIDADE
 
-Este repositório contém o script SQL para a criação do banco de dados **BD_UNIVERSIDADE**, que gerencia informações de alunos, cursos, professores, matrículas, disciplinas, avaliações e publicações acadêmicas.
+Este repositório contém o script SQL para a criação do banco de dados *BD_UNIVERSIDADE*, que gerencia informações de alunos, cursos, professores, matrículas, disciplinas, avaliações e publicações acadêmicas. Veja a seguir as instruções para importação dos scripts no `MySQL Workbench` e na sequência como esse banco de dados está estruturado.
+
+---
+
+## Instruções para Importar o Arquivo `bd_universidade.sql` no MySQL Workbench
+
+Este tutorial descreve como importar o arquivo SQL para configurar o banco de dados **BD_UNIVERSIDADE** no MySQL Workbench.
+
+### Pré-requisitos:
+- MySQL Workbench instalado em sua máquina.
+- MySQL Server em execução.
+- O arquivo `bd_universidade.sql` localizado no seu computador.
+
+### Passos para a Importação:
+
+#### 1. Abrir o MySQL Workbench
+- Inicie o **MySQL Workbench**.
+- Conecte-se ao seu servidor MySQL clicando na conexão desejada.
+
+#### 2. Importar o Arquivo SQL
+- No menu superior, clique em **File**.
+- Selecione **Open SQL Script**.
+- Navegue até o local onde o arquivo `bd_universidade.sql` está salvo e selecione-o.
+- O conteúdo do arquivo SQL será exibido na janela do editor de scripts.
+
+#### 3. Executar o Script SQL
+- Para executar o script:
+  - Clique no ícone de raio (**Execute**), ou pressione **Ctrl + Shift + Enter**.
+- O MySQL Workbench processará o script SQL, criará o banco de dados **bd_universidade**, as tabelas, e inserirá os dados.
+
+#### 4. Verificar a Importação
+- Após a execução bem-sucedida, navegue até o painel **Schemas** e localize o banco de dados **bd_universidade**.
+- Expanda o banco de dados para verificar se todas as tabelas foram criadas corretamente e se os dados foram importados.
+
+### Comando Alternativo (linha de comando):
+Caso prefira realizar a importação via linha de comando, você pode usar o seguinte comando no terminal:
+
+```bash
+mysql -u root -p < caminho/para/bd_universidade.sql
+```
+
+---
 
 ## Estrutura do Banco de Dados
 
@@ -20,7 +61,7 @@ Armazena as informações dos alunos da universidade.
 - `dataNascimento` (DATE): Data de nascimento do aluno.
 
 #### Quantidade de Registros:
-- 3 registros
+- `10.000` registros
 
 #### Exemplo de Registros:
 | idAluno | nome                                    | email                         | dataNascimento |
@@ -42,7 +83,7 @@ Armazena as informações dos campus da universidade.
 - `cidade` (VARCHAR(50)): Cidade onde o campus está localizado.
 
 #### Quantidade de Registros:
-- 3 registros
+- `15` registros
 
 #### Exemplo de Registros:
 | idCampus | nome                      | endereco                                                        | telefone       | cidade  |
@@ -64,7 +105,7 @@ Armazena os cursos oferecidos nos diferentes campus.
 - `qtdSemestres` (INT): Duração do curso em semestres.
 
 #### Quantidade de Registros:
-- 3 registros
+- `174` registros
 
 #### Exemplo de Registros:
 | idCurso | nome                                                                 | qtdHoras | qtdSemestres | idCampus |
@@ -86,7 +127,7 @@ Armazena as matrículas dos alunos nos cursos.
 - `semestre` (INT): Semestre em que o aluno está matriculado.
 
 #### Quantidade de Registros:
-- 3 registros
+- `10.000` registros
 
 #### Exemplo de Registros:
 | idMatricula | idAluno | idCurso | data        | semestre |
@@ -108,7 +149,7 @@ Armazena os dados dos professores da universidade.
 - `dataContrato` (DATE): Data de contratação.
 
 #### Quantidade de Registros:
-- 3 registros
+- `2.420` registros
 
 #### Exemplo de Registros:
 | idProfessor | nome                                             | email                            | titulacao | dataContrato |
@@ -131,7 +172,7 @@ Armazena as disciplinas ofertadas nos cursos, ministradas pelos professores.
 - `ementa` (LONGTEXT): Ementa descritiva da disciplina.
 
 #### Quantidade de Registros:
-- 3 registros
+- `1.281` registros
 
 #### Exemplo de Registros:
 | idDisciplina | nome                            | cargaHoraria | idCurso | idProfessor |
@@ -153,7 +194,7 @@ Armazena as avaliações realizadas pelos alunos em cada disciplina.
 - `nota` (DOUBLE): Nota obtida pelo aluno.
 
 #### Quantidade de Registros:
-- 3 registros
+- `269.750` registros
 
 #### Exemplo de Registros:
 | idAvaliacao | idAluno | idDisciplina | data        | nota |
@@ -172,7 +213,7 @@ Armazena os diferentes tipos de produções acadêmicas (artigos, livros, etc.).
 - `nome` (VARCHAR(45)): Nome do tipo de produção acadêmica.
 
 #### Quantidade de Registros:
-- 3 registros
+- `12` registros
 
 #### Exemplo de Registros:
 | idTipo | nome              |
@@ -191,7 +232,7 @@ Armazena as diferentes áreas de conhecimento relacionadas às produções acad�
 - `nome` (VARCHAR(45)): Nome da área de conhecimento.
 
 #### Quantidade de Registros:
-- 3 registros
+- `8` registros
 
 #### Exemplo de Registros:
 | idArea | nome                       |
@@ -215,7 +256,7 @@ Armazena as publicações feitas pelos alunos em diferentes áreas e tipos.
 - `qualis` (CHAR(2)): Classificação Qualis da publicação.
 
 #### Quantidade de Registros:
-- 3 registros
+- `1.461` registros
 
 #### Exemplo de Registros:
 | idPublicacao | titulo                                                                                      | data        | qualis | idTipo | idAluno | idArea |
@@ -226,38 +267,3 @@ Armazena as publicações feitas pelos alunos em diferentes áreas e tipos.
 
 ---
 
-# Instruções para Importar o Arquivo `bd_universidade.sql` no MySQL Workbench
-
-Este tutorial descreve como importar o arquivo SQL para configurar o banco de dados **BD_UNIVERSIDADE** no MySQL Workbench.
-
-## Pré-requisitos:
-- MySQL Workbench instalado em sua máquina.
-- MySQL Server em execução.
-- O arquivo `bd_universidade.sql` localizado no seu computador.
-
-## Passos para a Importação:
-
-### 1. Abrir o MySQL Workbench
-- Inicie o **MySQL Workbench**.
-- Conecte-se ao seu servidor MySQL clicando na conexão desejada.
-
-### 2. Importar o Arquivo SQL
-- No menu superior, clique em **File**.
-- Selecione **Open SQL Script**.
-- Navegue até o local onde o arquivo `bd_universidade.sql` está salvo e selecione-o.
-- O conteúdo do arquivo SQL será exibido na janela do editor de scripts.
-
-### 3. Executar o Script SQL
-- Para executar o script:
-  - Clique no ícone de raio (**Execute**), ou pressione **Ctrl + Shift + Enter**.
-- O MySQL Workbench processará o script SQL, criará o banco de dados **bd_universidade**, as tabelas, e inserirá os dados.
-
-### 4. Verificar a Importação
-- Após a execução bem-sucedida, navegue até o painel **Schemas** e localize o banco de dados **bd_universidade**.
-- Expanda o banco de dados para verificar se todas as tabelas foram criadas corretamente e se os dados foram importados.
-
-## Comando Alternativo (linha de comando):
-Caso prefira realizar a importação via linha de comando, você pode usar o seguinte comando no terminal:
-
-```bash
-mysql -u root -p < caminho/para/bd_universidade.sql
