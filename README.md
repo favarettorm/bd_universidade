@@ -1,3 +1,7 @@
+![Static Badge](https://img.shields.io/badge/Prof.-Rodolfo_Favaretto-brightgreen?style=plastic)
+![GitHub repo size](https://img.shields.io/github/repo-size/favarettorm/bd_universidade?style=plastic&label=Tamanho) 
+![Static Badge](https://img.shields.io/badge/Script-BD__UNIVERSIDADE-yellow?style=plastic)
+
 # Banco de Dados BD_UNIVERSIDADE
 
 Este repositório contém o script SQL para a criação do banco de dados *BD_UNIVERSIDADE*, que gerencia informações de alunos, cursos, professores, matrículas, disciplinas, avaliações e publicações acadêmicas. Veja a seguir as instruções para importação dos scripts no `MySQL Workbench` e na sequência como esse banco de dados está estruturado.
